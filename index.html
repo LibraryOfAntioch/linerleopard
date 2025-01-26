@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Liner Leopard</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="header-container">
+        <img src="liner-leopard.png" alt="Liner Leopard" class="logo">
+        <div>
+            <h1>Liner Leopard</h1>
+            <h2 class="subtitle">Ditch Liner Design Calculator</h2>
+        </div>
+    </div>
+
+    <div class="panel">
+        <h2>Input Parameters</h2>
+        
+        <div class="progress-container">
+            <div class="progress-bar" id="progress"></div>
+        </div>
+
+        <div class="input-group">
+            <label for="flowRate">Design Flow Rate (cfs)</label>
+            <div class="input-wrapper">
+                <input type="number" id="flowRate" step="0.01" min="0" placeholder="Enter flow rate">
+                <div class="value-indicator"></div>
+                <span class="info-icon">ⓘ</span>
+                <div class="tooltip">
+                    Design flow rate (Q) in cubic feet per second (cfs).<br>
+                    Typical range: 0.1 - 1000 cfs
+                </div>
+            </div>
+        </div>
+
+        <div class="input-group">
+            <label for="bottomWidth">Bottom Width (ft)</label>
+            <div class="input-wrapper">
+                <input type="number" id="bottomWidth" step="0.1" min="0" placeholder="Enter bottom width">
+                <div class="value-indicator"></div>
+                <span class="info-icon">ⓘ</span>
+                <div class="tooltip">
+                    Channel bottom width in feet.<br>
+                    Typical range: 0 - 30 ft<br>
+                    Minimum recommended: 2 ft
+                </div>
+            </div>
+        </div>
+
+        <div class="input-group">
+            <label for="leftSlope">Left Side Slope (H:V)</label>
+            <div class="input-wrapper">
+                <input type="number" id="leftSlope" step="0.1" min="0" placeholder="Enter left slope">
+                <div class="value-indicator"></div>
+                <span class="info-icon">ⓘ</span>
+                <div class="tooltip">
+                    Left side slope ratio (Horizontal:1 Vertical).<br>
+                    Typical range: 2:1 - 6:1<br>
+                    Recommended minimum: 2:1
+                </div>
+            </div>
+        </div>
+
+        <div class="input-group">
+            <label for="rightSlope">Right Side Slope (H:V)</label>
+            <div class="input-wrapper">
+                <input type="number" id="rightSlope" step="0.1" min="0" placeholder="Enter right slope">
+                <div class="value-indicator"></div>
+                <span class="info-icon">ⓘ</span>
+                <div class="tooltip">
+                    Right side slope ratio (Horizontal:1 Vertical).<br>
+                    Typical range: 2:1 - 6:1<br>
+                    Recommended minimum: 2:1
+                </div>
+            </div>
+        </div>
+
+        <div class="input-group">
+            <label for="channelSlope">Channel Slope (ft/ft)</label>
+            <div class="input-wrapper">
+                <input type="number" id="channelSlope" step="0.001" min="0" placeholder="Enter channel slope">
+                <div class="value-indicator"></div>
+                <span class="info-icon">ⓘ</span>
+                <div class="tooltip">
+                    Channel slope in ft/ft (decimal form).<br>
+                    Typical range: 0.001 - 0.10<br>
+                    Minimum recommended: 0.005
+                </div>
+            </div>
+        </div>
+
+        <div class="button-group no-print">
+            <button class="calculate-btn" onclick="calculate()">Calculate</button>
+            <button class="clear-btn" onclick="clearAll()">Clear</button>
+            <button class="print-btn" onclick="printResults()">Print PDF</button>
+        </div>
+
+        <div id="status" class="status"></div>
+    </div>
+
+    <div class="panel" id="results-panel">
+        <h2>Results</h2>
+        <div id="results">
+            <table class="results-table">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Value</th>
+                        <th>Units</th>
+                    </tr>
+                </thead>
+                <tbody id="resultsBody">
+                </tbody>
+            </table>
+
+            <div class="calculation-procedure">
+                <h3>Calculation Procedure</h3>
+                <div class="procedure-steps" id="procedureSteps">
+                    <!-- Steps will be populated here -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="calculations.js"></script>
+</body>
+</html> 
+
